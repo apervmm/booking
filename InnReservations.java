@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -239,7 +240,7 @@ class InnReservations {
                             "Type 'Confirm' to confirm your reservation or 'Cancel' to return to the main menu.");
                     choice = scanner.nextLine();
                     if ("confirm".equalsIgnoreCase(roomChoice)) {
-                        Random rand = new Random();
+                        Random rand = new SecureRandom();
                         Integer randint = 20000 + rand.nextInt(10000);
                         String insertsql = "INSERT INTO anguy714.lab7_reservations (CODE, Room, CheckIn, CheckOut, Rate, LastName, FirstName, Adults, Kids) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
                         try (PreparedStatement psmt2 = conn.prepareStatement(insertsql)) {
