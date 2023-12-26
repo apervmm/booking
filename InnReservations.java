@@ -37,19 +37,19 @@ class InnReservations {
             System.out.println(" [5] - Detailed Reservation Information\n [6] - Revenue\n [7] - Quit");
             System.out.println("What option [#] do you want: ");
             userInput = scanner.nextLine();
-            if (userInput.equals("1")) {
+            if ("1".equals(userInput)) {
                 getRoomsAndRates();
-            } else if (userInput.equals("2")) {
+            } else if ("2".equals(userInput)) {
                 getReservations(scanner);
-            } else if (userInput.equals("3")) {
+            } else if ("3".equals(userInput)) {
                 getReservationChange(scanner);
-            } else if (userInput.equals("4")) {
+            } else if ("4".equals(userInput)) {
                 getReservationCancellation(scanner);
-            } else if (userInput.equals("5")) {
+            } else if ("5".equals(userInput)) {
                 getReservationInformation(scanner);
-            } else if (userInput.equals("6")) {
+            } else if ("6".equals(userInput)) {
                 getRevenue();
-            } else if (userInput.equals("7")) {
+            } else if ("7".equals(userInput)) {
                 userInput = "quit";
             }
         }
@@ -283,14 +283,14 @@ class InnReservations {
                 System.getenv("HP_JDBC_PW"))) {
             System.out.println("Please enter the reservation code for the reservation you want to change:");
             ReservationCode = Integer.parseInt(scanner.nextLine());
-            while (!userInput.equals("quit")) {
+            while (!"quit".equals(userInput)) {
                 String q = "select * from anguy714.lab7_reservations where CODE = ?;";
                 System.out.println(
                         "[1] - First Name \n[2] - Last Name \n[3] - Begin Date \n[4] - End Date \n[5] - Number of Children \n[6] - Number of Adults \n[q] - quit");
                 System.out.println("What would Like to Change in Reseravetion? (Select Option): ");
                 userInput = scanner.nextLine();
 
-                if (userInput.equals("1")) {
+                if ("1".equals(userInput)) {
                     String sqlFirstName = "update anguy714.lab7_reservations\n" +
                             "set FirstName = ?\n" +
                             "where CODE = ?;";
@@ -304,7 +304,7 @@ class InnReservations {
                     } catch (SQLException se) {
                         System.out.println("Query Execution Failed");
                     }
-                } else if (userInput.equals("2")) {
+                } else if ("2".equals(userInput)) {
                     String sqlLastName = "update anguy714.lab7_reservations\n" +
                             "set LastName = ?\n" +
                             "where CODE = ?;";
@@ -318,7 +318,7 @@ class InnReservations {
                     } catch (SQLException se) {
                         System.out.println("Query Execution Failed");
                     }
-                } else if (userInput.equals("3")) {
+                } else if ("3".equals(userInput)) {
                     String sqlquery = "update anguy714.lab7_reservations\n" +
                             "set Checkin = ?\n" +
                             "where CODE = ?;";
@@ -332,7 +332,7 @@ class InnReservations {
                     } catch (SQLException se) {
                         System.out.println("Query Execution Failed");
                     }
-                } else if (userInput.equals("4")) {
+                } else if ("4".equals(userInput)) {
                     String sqlquery = "update anguy714.lab7_reservations\n" +
                             "set Checkout = ?\n" +
                             "where CODE = ?;";
@@ -345,7 +345,7 @@ class InnReservations {
                     } catch (SQLException se) {
                         System.out.println("Query Execution Failed");
                     }
-                } else if (userInput.equals("5")) {
+                } else if ("5".equals(userInput)) {
                     String sqlquery = "update anguy714.lab7_reservations\n" +
                             "set Kids = ?\n" +
                             "where CODE = ?;";
@@ -358,7 +358,7 @@ class InnReservations {
                     } catch (SQLException se) {
                         System.out.println("Query Execution Failed");
                     }
-                } else if (userInput.equals("6")) {
+                } else if ("6".equals(userInput)) {
                     String sqlquery = "update anguy714.lab7_reservations\n" +
                             "set Adults = ?\n" +
                             "where CODE = ?;";
@@ -371,7 +371,7 @@ class InnReservations {
                     } catch (SQLException se) {
                         System.out.println("Query Execution Failed");
                     }
-                } else if (userInput.equals("q")) {
+                } else if ("q".equals(userInput)) {
                     userInput = "quit";
                 }
             }
@@ -407,7 +407,7 @@ class InnReservations {
                     System.out.println("Kids: " + rs.getInt("Kids"));
                     System.out.println("Enter [Y] to confirm cancellation or [N] to go back:");
                     String confirmation = scanner.nextLine();
-                    if (confirmation.equalsIgnoreCase("Y")) {
+                    if ("Y".equalsIgnoreCase(confirmation)) {
                         sqlStatement = "delete from anguy714.lab7_reservations\n" +
                                 "where code = ?";
                         try (PreparedStatement stmt2 = conn.prepareStatement(sqlStatement);) {
